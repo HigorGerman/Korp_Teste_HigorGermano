@@ -1,0 +1,33 @@
+<div style="display: flex; height: 100vh; width: 100vw; overflow: hidden; background-color: #f1f5f9;">
+  
+  <!-- Sidebar Fixa com Largura Definida -->
+  <aside style="width: 260px; min-width: 260px; background-color: #0f172a; color: white; display: flex; flex-direction: column; z-index: 1;">
+    <app-sidebar [activeTab]="activeTab" (tabChange)="setTab($event)"></app-sidebar>
+  </aside>
+
+  <!-- Área Principal (TopBar + Conteúdo) em Fluxo Normal -->
+  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0; overflow-y: auto; background-color: #f8fafc; z-index: 2;">
+    <header style="background-color: white; border-bottom: 1px solid #e2e8f0; padding: 12px 24px;">
+      <app-topbar></app-topbar>
+    </header>
+
+    <main style="padding: 24px; flex: 1;">
+      <div *ngIf="activeTab === 'overview'">
+        <app-dashboard-overview></app-dashboard-overview>
+      </div>
+
+      <div *ngIf="activeTab === 'notas'">
+        <app-notas-fiscais></app-notas-fiscais>
+      </div>
+
+      <div *ngIf="activeTab === 'estoque'">
+        <app-estoque></app-estoque>
+      </div>
+
+      <div *ngIf="activeTab === 'ia'">
+        <app-stock-ai-card></app-stock-ai-card>
+      </div>
+    </main>
+  </div>
+
+</div>

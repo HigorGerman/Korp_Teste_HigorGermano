@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  stock_db:
+    image: postgres:15-alpine
+    container_name: stock_db
+    environment:
+      POSTGRES_DB: stock_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5434:5432"
+    volumes:
+      - stock_db_data:/var/lib/postgresql/data
+
+  invoice_db:
+    image: postgres:15-alpine
+    container_name: invoice_db
+    environment:
+      POSTGRES_DB: invoice_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5433:5432"
+    volumes:
+      - invoice_db_data:/var/lib/postgresql/data
+
+volumes:
+  stock_db_data:
+  invoice_db_data:
